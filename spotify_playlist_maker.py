@@ -17,7 +17,7 @@ date_string = f"{year}-{month}-{day}"
 base_url = "https://www.billboard.com/charts/hot-100/"
 full_url = f"{base_url}{date_string}/"
 
-# using spotipy apk to authenticate that 
+# using spotipy api to authenticate that 
 sp = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
         scope="playlist-modify-private",
@@ -64,5 +64,6 @@ for song in numbers:
 playlist = sp.user_playlist_create(user=user_id,name=f"{date_string} Billboard 100", public=False)
 
 sp.playlist_add_items(playlist_id=playlist["id"], items=song_uri)
+
 
 stopper = input("\n\nPlaylist Created Check Spotify \nPress ENTER to exit.")
